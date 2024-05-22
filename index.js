@@ -87,13 +87,6 @@ function checkIsSecretKey(key) {
   }
 }
 
-function fromBase64(base64) {
-  return base64
-    .replace(/=/g, '')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_');
-}
-
 function toBase64(base64url) {
   base64url = base64url.toString();
 
@@ -131,7 +124,7 @@ function createHmacSigner(bits) {
     thing = normalizeInput(thing);
     var hmac = crypto.createHmac('sha' + bits, secret);
     var sig = (hmac.update(thing), hmac.digest('base64'))
-    return fromBase64(sig);
+    return sig;
   }
 }
 
@@ -150,7 +143,7 @@ function createKeySigner(bits) {
     // keys as well.
     var signer = crypto.createSign('RSA-SHA' + bits);
     var sig = (signer.update(thing), signer.sign(privateKey, 'base64'));
-    return fromBase64(sig);
+    return sig;
   }
 }
 
@@ -175,7 +168,7 @@ function createPSSKeySigner(bits) {
       padding: crypto.constants.RSA_PKCS1_PSS_PADDING,
       saltLength: crypto.constants.RSA_PSS_SALTLEN_DIGEST
     }, 'base64'));
-    return fromBase64(sig);
+    return sig;
   }
 }
 

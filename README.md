@@ -1,5 +1,7 @@
 # node-jwa [![Build Status](https://travis-ci.org/brianloveswords/node-jwa.svg?branch=master)](https://travis-ci.org/brianloveswords/node-jwa)
 
+Forked to add support for non standard JWTs using base64 rather than base64url
+
 A
 [JSON Web Algorithms](http://tools.ietf.org/id/draft-ietf-jose-json-web-algorithms-08.html)
 implementation focusing (exclusively, at this point) on the algorithms necessary for
